@@ -70,7 +70,7 @@
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password <span style="color: red;">*</span></label>
                       <input type="password" name="password" class="form-control" formControlName="password">
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <div style="color: red;" *ngIf="errorPass$ | async as errorPass">{{errorPass}}</div>
                     </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit" [disabled]="loginForm.invalid">Login</button>

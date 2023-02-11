@@ -11,6 +11,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'angular-login',
@@ -19,9 +20,9 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  loading = false;
-  submitted = false;
-  viethoa = false;
+  errorPassSubject: BehaviorSubject<string> = new BehaviorSubject<string>("")
+
+  errorPass$: Observable<string> = this.errorPassSubject.asObservable();
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {}
 
@@ -40,12 +41,18 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     var username = this.loginForm.get("email")?.value
     var password = this.loginForm.get("password")?.value
-    console.log(account);
+  
+    if (password.length < 8) {
+      this.errorPassSubject.next("Mật khẩu phải dài từ 8 ký tự")
+      return;
+    }
+
     if (username == account.username && account.password) {
       this.authService.saveUser(username, password);
       this.router.navigate(['']);
     } else {
 
     }
+    
   }
 }
