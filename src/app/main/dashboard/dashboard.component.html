@@ -1,7 +1,7 @@
 
 <div class="card">
     <div class="row h-100 justify-content-around g-2">
-      <div
+      <div routerLink="/detail/{{movie.id}}"routerLinkActive="active" 
         class="col-sm-12 col-md-5 h-100 m-2"
         *ngFor="let movie of mainMovies"
       >
@@ -22,7 +22,7 @@
   </div>
 <div class="card">
   <div class="row h-100 justify-content-around g-2">
-    <div
+    <div routerLink="/detail/{{movie.id}}"routerLinkActive="active" 
       class="col-sm-6 col-md-3 h-100 m-2"
       *ngFor="let movie of movies"
     >
