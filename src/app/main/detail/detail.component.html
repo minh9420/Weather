@@ -1,0 +1,20 @@
+
+<div  class="report-container"  >
+ 
+    
+    <h2><button (click)="goBack()"><ion-icon class="arrow-back"name="arrow-back-outline"></ion-icon></button>Chi tiết</h2>
+    
+        <div class="parent"*ngIf="movie">
+            <img src={{movie.imageName}} alt="">
+         <ol class="movies">
+            <li class="movieListItem" 
+        >
+         {{movie.id}}
+         
+            {{movie.conTent}}
+        
+            </li>
+         </ol>
+         
+        </div>
+</div>

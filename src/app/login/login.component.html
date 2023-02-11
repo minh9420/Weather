@@ -1,0 +1,36 @@
+<body>
+  <div class="container">
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="container-login">
+        
+        <div class="container-login-item display_flex">
+          <label style="margin-right: 16px; color: red;" for="email">*</label>
+          <input class="container-login-item-input" type="email" id="email" formControlName="email" placeholder="Tài khoản đăng nhập"/>
+        </div>
+        <div style="margin-left: 100px;" *ngIf="loginForm.controls.email.errors?.['required'] && (loginForm.controls.email.dirty || loginForm.controls.email.touched || submitted)">
+         <span style="color: red;">
+           Không được để trống.
+         </span>
+        </div>
+        <div class="container-login-item display_flex">
+          <label style="margin-right: 16px; color: red;" for="password">*</label>
+          <input class="container-login-item-input" type="password" id="password" formControlName="password" placeholder="Mật khẩu"/>
+        </div>
+        <div style="margin-left: 100px;" *ngIf="loginForm.controls.password.errors?.['required']  && (loginForm.controls.password.dirty || loginForm.controls.password.touched || submitted)">
+          <span style="color: red;">
+            Không được để trống.
+          </span>
+         </div>
+         <div style="margin-left: 100px;" *ngIf="viethoa">
+          <span style="color: red;">
+            Không được viết hoa.
+          </span>
+         </div>
+         <div class="display_flex">
+           <button class="container-login-btn" type="submit">Submit</button>
+         </div>
+      </div>
+    </form>
+  </div>
+</body>

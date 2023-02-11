@@ -1,0 +1,13 @@
+<!-- <p>ABCCC</p> -->
+<div class="box-container">
+    <a class="box" routerLink="/detail/{{eachMovie.id}}"routerLinkActive="active" ariaCurrentWhenActive="page" *ngFor="let eachMovie of movies" >
+        <div class="text">
+            
+            <img src="{{eachMovie.imageName}}" alt="My Image">
+            <h2 class="topic-heading">{{eachMovie.name}}</h2>
+            
+        </div>
+
+        
+    </a>
+</div> 
