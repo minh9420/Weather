@@ -1,2 +1,2 @@
-<angular-menu></angular-menu>
-<!-- <router-outlet></router-outlet> -->
+<angular-menu *ngIf="isLogined()"></angular-menu>
+<angular-login *ngIf="!isLogined()"></angular-login>

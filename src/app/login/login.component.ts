@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { account } from '../mock_account';
 import {
   ReactiveFormsModule,
   Validators,
@@ -9,6 +10,7 @@ import {
 // import { Validator,Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'angular-login',
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   viethoa = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -36,28 +38,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('alo', this.loginForm);
-    // this.loginForm.controls.password.errors = true
+    var username = this.loginForm.get("email")?.value
+    var password = this.loginForm.get("password")?.value
+    console.log(account);
+    if (username == account.username && account.password) {
+      this.authService.saveUser(username, password);
+      this.router.navigate(['']);
+    } else {
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      this.submitted = true;
-      // return;
-    } else if (this.loginForm.controls.password.value) {
-      let text = this.loginForm.controls.password.value;
-      for (let item of text) {
-        if (item == item.toUpperCase()) {
-          this.viethoa = true;
-          return
-        }
-        else {
-          console.log('ghádsas1');
-          this.router.navigateByUrl('/');
-        }
-      }
-    } 
-
-    this.loading = true;
-    // perform the login logic here
+    }
   }
 }
