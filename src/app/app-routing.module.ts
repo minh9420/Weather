@@ -7,29 +7,31 @@ import { MainComponent } from './main/main.component';
 import { MenuComponent } from './main/menu/menu.component';
 import { AbcComponent } from './main/abc/abc.component';
 import { InfoComponent } from './info/info.component';
-
+import { AgmCoreModule } from '@agm/core';
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  // { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   // {path:'menu',component:MenuComponent},
   // { path: 'dashboard', component: DashboardComponent },
   // {path : 'detail/:id',component: DetailComponent},
-  {path: 'abc',component: AbcComponent},
+  { path: '', component: AbcComponent },
   { path: 'login', component: LoginComponent },
   { path: 'info', component: InfoComponent },
-  {
-    path: '',
-    component: MainComponent,
-    children:[
-    {path : 'dashboard',component: DashboardComponent},
-    {path : 'detail/:id',component: DetailComponent},
-    {path : 'menu',component: MenuComponent}
+  // {
+  //   path: '',
+  //   component: MainComponent,
+  //   children: [
+  //     { path: 'dashboard', component: DashboardComponent },
+  //     { path: 'detail/:id', component: DetailComponent },
+  //     { path: 'menu', component: MenuComponent }
 
-    ]
-  },
+  //   ]
+  // },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), AgmCoreModule.forRoot({
+    apiKey: 'GOOGLE MAPS API KEY'
+  }),],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
