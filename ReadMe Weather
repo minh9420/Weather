@@ -1,0 +1,4 @@
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+Run npm i to get node_module
+Run `ng serve`,The application will automatically reload if you change any of the source files.
+User can chose the location that every where you want to watch and click tag 'tìm kiếm' and see what change
